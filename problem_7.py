@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[6]:
+# In[10]:
 
 
 """
@@ -21,13 +21,14 @@ class RouteTrieNode:
 
 # A RouteTrie will store our routes and their associated handlers
 class RouteTrie:
-    def __init__(self, handler):
+    def __init__(self, handler = None, not_found = None):
         """
         Initialize the trie with a root node and a handler,
         this is the root path or home page node
         """
         self.root = RouteTrieNode()
         self.handler = handler
+        self.not_found = not_found if not_found is not "" or not_found is not None else "HTTP 404 Page Not Found"
 
     def insert(self, path_list, handler):
         """
@@ -114,7 +115,7 @@ class Router:
 # create the router and add a route
 # remove the 'not found handler' if you did not implement this
 
-router = Router("root handler", "not found handler")
+router = Router("/", "root handler")
 router.add_handler("/home/about", "about handler")  # add a route
 router.add_handler("/home/menu", "menu")  # add a route
 

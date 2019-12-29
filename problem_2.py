@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[74]:
+# In[14]:
 
 
 def rotated_array_search(input_list, number):
@@ -15,11 +15,17 @@ def rotated_array_search(input_list, number):
     """
     # find pivot element where the array is divided into two sorted halves
     #pivot is an index at which - next element is less than the value[pivot]
+    if number is None:
+        return -1
     
     pivot = locate_pivot(input_list, 0, len(input_list)-1)
+    
+    if pivot == -1:
+        return binary_search(number, input_list, 0, len(input_list)-1)
+    
     if number == input_list[pivot]:
         return pivot
-    
+
     #check if the element is less or equals to the element at "pivot-1" and is greater or equals to first element at 0
     # in other words check if the element is in first half 
     elif number <= input_list[pivot-1] and number >= input_list[0]:
@@ -66,6 +72,8 @@ def linear_search(input_list, number):
 def test_function(test_case):
     input_list = test_case[0]
     number = test_case[1]
+    #print(linear_search(input_list, number))
+    #print(rotated_array_search(input_list, number))
     if linear_search(input_list, number) == rotated_array_search(input_list, number):
         print("Pass")
     else:
@@ -79,6 +87,9 @@ test_function([[6, 7, 8, 1, 2, 3, 4], 10])
 test_function([[12, 13, 14, 15, 16, 17, 18, 10, 11], 10])
 test_function([[12, 13, 14, 15, 16, 17, 18, 10, 11], 13])
 test_function([[16, 11, 12, 13, 14, 15], 11])
+test_function([[1, 2, 3, 4, 5, 6, 7, 8], 7]) # already sorted array
+test_function([[], 11]) #empty array
+test_function([[], '']) #empty array and empty target ; edited the code to check if there is no target to search
 
 
 # In[ ]:

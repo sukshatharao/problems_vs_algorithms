@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[150]:
+# In[10]:
 
 
 import math
@@ -19,15 +19,28 @@ def sqrt(number):
     if number < 0:
         return False
     
-    epsilon = 0.00001  #error in our estimate
-    iterations = 0
-    estimate = 1.0
-    
-    #while guess**2 <= number:
-    while abs(number - estimate*estimate) > epsilon:   #Babylonian method - https://en.wikipedia.org/wiki/Methods_of_computing_square_roots
-        estimate = (estimate+ number/estimate) / 2.0
-        iterations +=1
-    return math.floor(estimate)
+    low = 0
+    high = number
+    # For computing integral part 
+    # of square root of number 
+    while (low <= high) : 
+        mid = int((low + high) / 2) 
+          
+        if (mid * mid == number) : 
+            ans = mid 
+            break
+          
+        # incrementing start if integral 
+        # part lies on right side of the mid 
+        if (mid * mid < number) : 
+            low = mid + 1
+            ans = mid 
+          
+        # decrementing end if integral part 
+        # lies on the left side of the mid 
+        else : 
+            high = mid - 1
+    return ans
 
 print ("Pass sqrt(9)" if  (math.sqrt(9) == sqrt(9)) else "Fail")
 print ("Pass sqrt(0)" if  (math.sqrt(0) == sqrt(0)) else "Fail")

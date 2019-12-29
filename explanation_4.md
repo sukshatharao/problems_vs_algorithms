@@ -6,6 +6,7 @@ Big O Space Complexity
 variables low, mid and high and variable to store the middle value
 a copy of the input list/array: O(n). 
 I swapped elements without temp variable
+n is the input size of the array/list. 
 
 Big O Time Complexity
 O(n) where n is the number of elements in the list.

@@ -5,7 +5,7 @@ Rearrange Array Elements so as to form two number such that their sum is maximum
 Divides the list in half and uses a recursive merge sort to create list of digits.
 
 Big O Space Complexity
-Merge sort creates a copy of the entire list, so space complexity is O(n)
+Merge sort creates a copy of the entire list, so space complexity is O(n);  n is the input size of the array/list. 
 
 Big O Time Complexity
-In worst case time complexity O(n log(n)).
+In worst case time complexity O(n log(n));  n is the input size of the array/list. 
